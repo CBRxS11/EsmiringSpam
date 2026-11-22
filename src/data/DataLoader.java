@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * DataLoader: reads a CSV file and turns each row into an Email object.
  *
- * Expected format (first row can be a header, it is skipped automatically):
+ * Expected format (the first row is always treated as a header and skipped.):
  *     label,text
  *     ham,"Hi, are we still meeting tomorrow?"
  *     spam,"WINNER!! Claim your free prize now"
@@ -38,7 +38,8 @@ public class DataLoader {
         List<List<String>> rows = parseCsv(content);
 
         List<Email> emails = new ArrayList<>();
-        for (List<String> row : rows) {
+        for (int r = 1; r < rows.size(); r++) {   // start at 1: row 0 is the header
+            List<String> row = rows.get(r);
             if (row.size() <= Math.max(labelColumn, textColumn)) continue; // broken row
 
             String label = row.get(labelColumn).trim().toLowerCase();

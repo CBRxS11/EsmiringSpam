@@ -24,6 +24,9 @@ public class Main {
         DataLoader loader = new DataLoader();
         List<Email> emails = loader.loadEmails(path, 1, 0);
 
+        int removed = new data.Deduplicator().removeDuplicates(emails);
+        System.out.println("Duplicates removed: " + removed);
+        
         // 2. Clean
         new Preprocessor().cleanAll(emails);
 
