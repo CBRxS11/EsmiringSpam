@@ -12,7 +12,7 @@ import java.util.List;
 import model.Email;
 
 /**
- * Main: loads the data, splits it, trains Naive Bayes, and prints a quick accuracy.
+ * Main: Loads the data, removes duplicates, splits it, trains and compares all three algorithms, and writes results.csv.
  * (The Evaluator, coming next, will replace the quick accuracy check below.)
  */
 public class Main {
@@ -26,7 +26,7 @@ public class Main {
 
         int removed = new data.Deduplicator().removeDuplicates(emails);
         System.out.println("Duplicates removed: " + removed);
-        
+
         // 2. Clean
         new Preprocessor().cleanAll(emails);
 
