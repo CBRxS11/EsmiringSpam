@@ -51,6 +51,8 @@ public class Main {
         DataSplitter split = new DataSplitter(emails, 0.8, 42);
         System.out.println("Train: " + split.getTrain().size()
                 + "  Test: " + split.getTest().size());
+        
+        data.PreprocessDemo.show(emails, split.getTrain(), split.getTest());
 
         // 4. Evaluate classifiers
         Evaluator evaluator = new Evaluator();
