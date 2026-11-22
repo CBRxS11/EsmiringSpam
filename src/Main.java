@@ -30,6 +30,16 @@ public class Main {
         // 2. Clean
         new Preprocessor().cleanAll(emails);
 
+        // in Main, after cleanAll(emails)
+        System.out.println("---- Preprocessing examples ----");
+        for (int i = 0; i < 3; i++) {
+                Email e = emails.get(i);
+                String raw = e.getRawText();
+                System.out.println("BEFORE: " + (raw.length() > 150 ? raw.substring(0, 150) + "..." : raw));
+                System.out.println("AFTER : " + e.getTokens().subList(0, Math.min(15, e.getTokens().size())));
+                System.out.println();
+        }
+
         int spamCount = 0;
         for (Email e : emails) if (e.isSpam()) spamCount++;
         System.out.println("Total emails: " + emails.size());
