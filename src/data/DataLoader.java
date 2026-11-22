@@ -12,14 +12,15 @@ import java.util.List;
 /**
  * DataLoader: reads a CSV file and turns each row into an Email object.
  *
- * Expected format (the first row is always treated as a header and skipped.):
- *     label,text
- *     ham,"Hi, are we still meeting tomorrow?"
- *     spam,"WINNER!! Claim your free prize now"
+ * The first row of the file is always treated as a header and skipped.
  *
- * By default column 0 is the label and column 1 is the text.
- * If your dataset is different (for example text first, label second),
- * use loadEmails(path, labelColumn, textColumn).
+ * Our dataset (data/emails.csv) has the columns:
+ *     text,spam
+ *     "Subject: hello ...",0
+ *     "Subject: free prize ...",1
+ * so it is loaded with loadEmails(path, 1, 0)  (label column 1, text column 0).
+ *
+ * By default (loadEmails(path)) column 0 is the label and column 1 is the text.
  *
  * A label counts as spam if it is "spam" or "1". Everything else is ham.
  */

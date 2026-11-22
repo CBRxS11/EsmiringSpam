@@ -12,8 +12,9 @@ import java.util.List;
 import model.Email;
 
 /**
- * Main: Loads the data, removes duplicates, splits it, trains and compares all three algorithms, and writes results.csv.
- * (The Evaluator, coming next, will replace the quick accuracy check below.)
+ * Main: loads the dataset, removes duplicate emails, cleans the text, splits it 80/20
+ * (seed 42), then trains and evaluates Naive Bayes, kNN and Logistic Regression.
+ * Prints each confusion matrix and its metrics, and saves everything to results.csv.
  */
 public class Main {
 
