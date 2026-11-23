@@ -1,0 +1,4 @@
+Classifier,TP,FP,FN,TN,Accuracy,Precision,Recall,F1,TrainTimeMs,PredictTimeMs
+Naive Bayes,261,4,4,870,0.992976,0.984906,0.984906,0.984906,83,32
+k-Nearest Neighbors (k=5),250,11,15,863,0.977173,0.957854,0.943396,0.950570,334,2625
+Logistic Regression,241,3,24,871,0.976295,0.987705,0.909434,0.946955,714,19
