@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         String path = args.length > 0 ? args[0] : "data/emails.csv";
 
-        // 1. Load  (if your columns are text,spam use: loader.loadEmails(path, 1, 0))
+        // 1. Load (column 1 = label, column 0 = text; row 0 is the header)
         DataLoader loader = new DataLoader();
         List<Email> emails = loader.loadEmails(path, 1, 0);
 
@@ -30,16 +30,6 @@ public class Main {
 
         // 2. Clean
         new Preprocessor().cleanAll(emails);
-
-        // in Main, after cleanAll(emails)
-        System.out.println("---- Preprocessing examples ----");
-        for (int i = 0; i < 3; i++) {
-                Email e = emails.get(i);
-                String raw = e.getRawText();
-                System.out.println("BEFORE: " + (raw.length() > 150 ? raw.substring(0, 150) + "..." : raw));
-                System.out.println("AFTER : " + e.getTokens().subList(0, Math.min(15, e.getTokens().size())));
-                System.out.println();
-        }
 
         int spamCount = 0;
         for (Email e : emails) if (e.isSpam()) spamCount++;
