@@ -113,7 +113,10 @@ public class MainWindow extends JFrame {
         footer.add(detailsButton, BorderLayout.EAST);
         root.add(footer, BorderLayout.SOUTH);
 
-        setContentPane(root);
+        JTabbedPane tabs = new JTabbedPane();
+        tabs.addTab("Dataset Summary", root);
+        tabs.addTab("Email Checker", new EmailCheckerPanel());
+        setContentPane(tabs);
     }
 
     private JPanel createDatasetPanel() {
