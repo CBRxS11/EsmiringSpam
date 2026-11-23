@@ -8,7 +8,7 @@ group project, written in Java with no external machine-learning libraries.
   Naive Bayes, k-Nearest Neighbors (kNN) and Logistic Regression.
 - Compares the three algorithms (confusion matrix, accuracy, precision, recall, F1, time).
 - Checks emails for phishing warning signs using a Trie and simple link rules.
-- Has a Java Swing window: paste an email, choose an algorithm, click Check.
+- Has a Java Swing window with two tabs: Dataset Summary (the evaluation results) and Email Checker (paste an email, choose an algorithm, click Check; also shows phishing warning signs).
 
 ## Requirements
 - JDK 17 or newer (the JDK, not only the JRE). Check with: `java -version` and `javac -version`
@@ -33,6 +33,8 @@ Open the Swing window:
 
     java -cp out ui.MainWindow
 
+    **Note: ** The window takes a few seconds to load because it trains the three algorithms.
+
 Always run from the project folder, because the program reads `data/emails.csv`.
 
 ## Project structure
@@ -42,13 +44,13 @@ Always run from the project folder, because the program reads `data/emails.csv`.
     src/data/        DataLoader, Deduplicator, Preprocessor, DataSplitter, PreprocessDemo
     src/classifier/  Classifier, NaiveBayes, KNN, LogisticRegression, TextVectorizer
     src/eval/        Evaluator
-    src/phishing/    Trie, PhishingChecker
+    src/phishing/    Trie, PhishingChecker, PhishingReport
     src/service/     SpamService
-    src/ui/          MainWindow
+    src/ui/          MainWindow, EmailCheckerPanel
 
 ## Dataset
-- Spam Email Dataset on Kaggle by jackksoncsie: [link]
-- License: [license shown on the Kaggle page]
+- Spam Email Dataset on Kaggle by jackksoncsie: https://www.kaggle.com/datasets/jackksoncsie/spam-email-dataset (accessed Nov 21, 2026)
+- License: GNU Lesser General Public License v3.0
 - 5,728 rows in the file; 5,695 unique emails after removing 33 duplicates
   (1,368 spam and 4,327 ham)
 - Columns: `text` and `spam` (1 = spam, 0 = ham)
