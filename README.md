@@ -33,7 +33,7 @@ Open the Swing window:
 
     java -cp out ui.MainWindow
 
-    **Note: ** The window takes a few seconds to load because it trains the three algorithms.
+**Note: ** The window takes a few seconds to load because it trains the three algorithms.
 
 Always run from the project folder, because the program reads `data/emails.csv`.
 
